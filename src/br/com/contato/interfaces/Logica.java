@@ -1,4 +1,4 @@
-package br.com.contato.modelo;
+package br.com.contato.interfaces;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

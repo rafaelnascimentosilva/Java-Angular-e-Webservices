@@ -1,4 +1,4 @@
-package br.com.contato.modelo;
+package br.com.contato.controller;
 
 import java.sql.Connection;
 
@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.com.contato.dao.UsuarioDAO;
+import br.com.contato.interfaces.Logica;
+import br.com.contato.modelo.Usuario;
 
 public class AutenticaUsuarioLogica implements Logica {
 

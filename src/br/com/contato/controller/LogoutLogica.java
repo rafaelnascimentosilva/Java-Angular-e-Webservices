@@ -1,8 +1,10 @@
-package br.com.contato.modelo;
+package br.com.contato.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import br.com.contato.interfaces.Logica;
 
 public class LogoutLogica implements Logica {
 

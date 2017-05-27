@@ -1,4 +1,4 @@
-package br.com.contato.essentials;
+package br.com.contato.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

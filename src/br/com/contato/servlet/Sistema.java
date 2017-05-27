@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.contato.modelo.Logica;
+import br.com.contato.interfaces.Logica;
 
 @WebServlet("/crud-system")
 public class Sistema extends HttpServlet {
@@ -19,7 +19,7 @@ public class Sistema extends HttpServlet {
 			throws ServletException, IOException {
 		
 		String acao = request.getParameter("acao");
-		String nomeDaClasse = "br.com.contato.modelo." + acao + "Logica";
+		String nomeDaClasse = "br.com.contato.controller." + acao + "Logica";
 
 		try {
 			Class<?> classe = Class.forName(nomeDaClasse);

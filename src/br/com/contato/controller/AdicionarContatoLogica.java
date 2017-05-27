@@ -1,4 +1,4 @@
-package br.com.contato.modelo;
+package br.com.contato.controller;
 
 import java.sql.Connection;
 import java.text.ParseException;
@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.com.contato.dao.ContatoDAO;
-import br.com.contato.essentials.ConverteData;
+import br.com.contato.interfaces.Logica;
+import br.com.contato.modelo.Contato;
+import br.com.contato.util.ConverteData;
 
 public class AdicionarContatoLogica implements Logica {
 

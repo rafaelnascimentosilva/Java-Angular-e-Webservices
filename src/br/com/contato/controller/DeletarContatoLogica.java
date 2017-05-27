@@ -1,4 +1,4 @@
-package br.com.contato.modelo;
+package br.com.contato.controller;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.contato.dao.ContatoDAO;
+import br.com.contato.interfaces.Logica;
+import br.com.contato.modelo.Contato;
 
 public class DeletarContatoLogica implements Logica {
 	@Override
