@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import br.com.contato.modelo.Usuario;
 
-@WebFilter(filterName = "FiltroAutorizacao", urlPatterns = "/*")
+//@WebFilter(filterName = "FiltroAutorizacao", urlPatterns = "/*")
 public class FiltroAutorizacao implements Filter {
 
 	@Override
