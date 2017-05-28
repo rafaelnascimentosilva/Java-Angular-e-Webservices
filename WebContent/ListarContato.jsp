@@ -12,7 +12,7 @@
 	<form action="crud-system" method="get">
 		<input type="hidden" name="acao" value="listar">
 	</form>
-	<c:import url="cabecalho.jsp"></c:import>
+ 	
 	<table cellpadding="4" cellspacing="4">
 		<c:forEach var="contato" items="${lista}" varStatus="id">
 			<tr bgcolor="#${id.count % 2 == 0 ? 'a87e14' : 'ffffff' }">
@@ -33,6 +33,6 @@
 	<a href="AdicionarContato.jsp"> Novo Contato</a>
 	<a href="Index.jsp"> Início</a>
 
-	<c:import url="rodape.jsp"></c:import>
+
 </body>
 </html>

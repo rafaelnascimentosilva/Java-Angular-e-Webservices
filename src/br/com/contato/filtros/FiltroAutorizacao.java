@@ -34,15 +34,18 @@ public class FiltroAutorizacao implements Filter {
 			logica = "";
 		}
 
-		if (uri.equals("Login.jsp") || logica.endsWith("AutenticaUsuario") || uri.endsWith("png")) {
+		if (uri.equals("login2.jsp") || logica.endsWith("AutenticaUsuario") || uri.endsWith("png")
+				|| uri.endsWith("css") || uri.endsWith("js") || uri.endsWith("woff2") || uri.endsWith("ttf")
+				|| uri.endsWith("woff")) {
 			chain.doFilter(request, response);
 
-		}else{
+		} else {
 			Usuario usuarioLogado = (Usuario) req.getSession().getAttribute("usuarioAutenticado");
-			if (usuarioLogado!=null) {
+			if (usuarioLogado != null) {
 				chain.doFilter(request, response);
-			}else{
-				RequestDispatcher dispatcher  = request.getRequestDispatcher("/Login.jsp");
+			} else {
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/login2.jsp");
 				request.setAttribute("msgUsuario", "Você nao tem autorização");
 				dispatcher.forward(request, response);
 			}
