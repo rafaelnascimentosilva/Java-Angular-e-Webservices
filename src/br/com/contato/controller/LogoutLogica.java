@@ -12,8 +12,7 @@ public class LogoutLogica implements Logica {
 	public void executa(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("usuarioAutenticado", null);
-		request.setAttribute("msgUsuario", "OLAPESSOA");
+		session.setAttribute("usuarioAutenticado", null);	
 		response.sendRedirect("login2.jsp");
 	}
 

@@ -12,7 +12,7 @@
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>	
 		  <script type="text/javascript">
             $(document).ready(function() {
-            	$("#menu a").click(function(e){
+            	$("#menu_contato a ").click(function(e){
             		e.preventDefault();
             		var href = $(this).attr('href');
             		$("#conteudo").load(href+"#conteudo");
@@ -34,11 +34,26 @@
 					<img alt="Logo" src="resources/imagens/logo.png">
 				</a>
 			</div>
-			<div class="collapse navbar-collapse" >
-				<ul class="nav navbar-nav" id="menu">
-					<li><a href="crud-system?acao=ListarContato">Lista Contatos</a></li>
-					<li><a href="AdicionarContato.jsp">Adiciona Contatos</a></li>
-					<li><a href="crud-system?acao=Logout">Sair</a></li>
+			<div class="collapse navbar-collapse" id="menu">
+				<ul class="nav navbar-nav" id="menu_contato">
+					<li><a class="linked" href="crud-system?acao=ListarContato">Lista Contatos</a></li>
+					<li><a class="linked" href="AdicionarContato.jsp">Adiciona Contatos</a></li>
+					
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						 	Bem Vindo, ${usuarioAutenticado.nome} 
+							<span class="caret"></span>
+						 </a>
+						 <div class="dropdown-menu perfil">
+						 	<ul class="list-unstyled">
+						 		<li>${usuarioAutenticado.nome}</li>
+						 		<li><a href="">Alterar perfil</a></li>
+						 		<li><a href="crud-system?acao=Logout">Sair</a></li>
+						 	</ul>
+						 </div>
+					</li>
 				</ul>
 			</div>
 		</div>

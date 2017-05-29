@@ -35,10 +35,10 @@
 				</div>
 									
 			</form>
-		<footer>
+		<div>
 			<button type="submit" form="formLogar" class="btn btn-primary" >Entrar</button>
 			<p>${msgUsuario}</p>
-		</footer>	
+		</div>	
 		</div>
 	</div>
 	
