@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import com.sun.org.apache.regexp.internal.recompile;
+
 import br.com.contato.modelo.Contato;
 
 public class ContatoDAO {
@@ -34,6 +36,34 @@ public class ContatoDAO {
 		}
 	}
 
+	public List<Contato> listaPaginada(int paginaInicio, int paginaLimite){
+		try {
+			PreparedStatement statement = this.connection.prepareStatement("SELECT * FROM tbcontato LIMIT ? OFFSET ?");
+			statement.setInt(1, paginaLimite);
+			statement.setInt(2, paginaInicio);
+			ResultSet rs = statement.executeQuery();
+			List<Contato> paginacao =  new ArrayList<Contato>();
+			while (rs.next()) {
+				Contato contato = new Contato();
+					contato.setId(new Integer(rs.getString("id")));
+					contato.setNome(rs.getString("nome"));
+					contato.setFone(rs.getString("fone"));
+				Calendar nascimento = Calendar.getInstance();
+					nascimento.setTime(rs.getDate("nascimento"));
+					contato.setNascimento(nascimento);
+					paginacao.add(contato);
+			}
+			
+			rs.close();
+			statement.close();			
+			return paginacao;
+			
+		}catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		
+		
+	}
 	public List<Contato> getLista() {
 		try {
 			PreparedStatement statement = this.connection.prepareStatement("select * from tbcontato");

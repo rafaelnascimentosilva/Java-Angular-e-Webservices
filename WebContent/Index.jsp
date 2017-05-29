@@ -5,11 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Tela de Menu</title>
 		<link rel="stylesheet" type="text/css"  href="resources/bootstrap/css/bootstrap.min.css">
-		<link  rel="stylesheet" type="text/css" href="resources/css/estilo.css">
-		
-	
-
-		
+		<link  rel="stylesheet" type="text/css" href="resources/css/estilo.css">		
 	</head>
 <body ng-app="listaDeContatos">
 
@@ -49,19 +45,21 @@
 			</div>
 		</div>
 	</nav>
-	<div ng-view>	
+	
+	
+	<div ng-view class="container">	
 		
 	</div>
 
 	Seja bem vindo ${usuarioAutenticado.nome} ao sistema de contatos
 
-	 
+	<!--  
 	  <footer  class="navbar-fixed-bottom">
 		  <div class="container">
 		  		<span class="text-muted">Copyright 2010 - Todos os direitos reservados</span>
 		  </div>
 	  </footer>
-	
+	 -->
 	  <script  src="resources/lib/angular/angular.js"></script>
 	  <script  src="resources/lib/angular/angular-route.js"></script>
 	  <script  src="resources/js/app.js"></script>

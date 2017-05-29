@@ -18,11 +18,22 @@ body {
 
 .logotipo {
 	padding: 10px;
-	margin-right: 10px
+	margin-right: 10px;
 }
 
 .logotipo img {
-	height: 30px
+	height: 30px;
+}
+
+.cabecalho{
+	margin-bottom: 10px
+}
+.cabecalho h1{
+	margin: 0;
+	font-size: 3em;
+}
+.busca{
+	margin-top: 7px;
 }
 
 .perfil {
@@ -50,6 +61,10 @@ body {
 		text-decoration: none;
 		color: #FFF;
 	}
+}
+
+.container{
+	margin-top: 10px
 }
 
 footer {

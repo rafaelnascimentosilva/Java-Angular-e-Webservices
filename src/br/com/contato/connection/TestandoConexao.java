@@ -12,28 +12,43 @@
 //public static void main(String[] args) throws SQLException {
 //		Connection connection = new ConnectionFactory().getConnecticon();
 //		
-//		System.out.println("conectado");
-//	Contato contatos = new Contato();
-//	contatos.setFone("988888888");
-//	contatos.setNome("Prima");
-//	contatos.setNascimento(Calendar.getInstance());
-//	contatos.setId(2);
+//		/*** CHAMANDO O METODO DE PAGINACAO ***/		
+//			
+//		/*
+//		 	ContatoDAO dao = new ContatoDAO(connection);		
+//			int inicio = 12;
+//			int paginaLimite = 3;
+//			
+//			List<Contato> paginacao = dao.listaPaginada(inicio, paginaLimite);
+//			
+//			for (Contato c : paginacao) {
+//				System.out.println("contatos: "+c.getNome());
+//			}
+//		*/
+//		
+////		System.out.println("conectado");
+////	Contato contatos = new Contato();
+////	contatos.setFone("988888888");
+////	contatos.setNome("Prima");
+////	contatos.setNascimento(Calendar.getInstance());
+////	contatos.setId(2);
 //	
+//		
 //	
-//	ContatoDAO dao = new ContatoDAO();
-//	dao.altera(contatos);
+//	//ContatoDAO dao = new ContatoDAO();
+//	//dao.altera(contatos);
 //	
 ////		contatos.setNome("Rafael");
 ////		contatos.setFone("988888888");
 ////		contatos.setNascimento(Calendar.getInstance());
 //		
-////		ContatoDAO dao = new ContatoDAO();
-////		List<Contatos> lista = dao.getLista();
-////		for (Contatos contatos2 : lista) {
+//	
+////		List<Contato> lista = dao.getLista();
+////		for (Contato contatos2 : lista) {
 ////		 System.out.println("Nome: "+contatos2.getNome());
 ////		}
-//		connection.close();
-//		
+////		connection.close();
+////		
 //		
 //	}
 //}
