@@ -45,7 +45,7 @@ public class FiltroAutorizacao implements Filter {
 				chain.doFilter(request, response);
 			} else {
 				
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/login2.jsp");
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/Login.jsp");
 				request.setAttribute("msgUsuario", "Você nao tem autorização");
 				dispatcher.forward(request, response);
 			}

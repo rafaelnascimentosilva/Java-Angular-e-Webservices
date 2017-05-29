@@ -1,6 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ include file="includes.jsp"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,18 +6,12 @@
 		<title>Tela de Menu</title>
 		<link rel="stylesheet" type="text/css"  href="resources/bootstrap/css/bootstrap.min.css">
 		<link  rel="stylesheet" type="text/css" href="resources/css/estilo.css">
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>	
-		  <script type="text/javascript">
-            $(document).ready(function() {
-            	$("#menu_contato a ").click(function(e){
-            		e.preventDefault();
-            		var href = $(this).attr('href');
-            		$("#conteudo").load(href+"#conteudo");
-            	});
-            });
-        </script>
+		
+	
+
+		
 	</head>
-<body>
+<body ng-app="listaDeContatos">
 
 	<nav class="navbar navbar-inverse navbar-static-top ">
 		<div class="container">
@@ -30,14 +21,14 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a href="Index.jsp" class="navbar-brand logotipo">
+				<a href="#/" class="navbar-brand logotipo">
 					<img alt="Logo" src="resources/imagens/logo.png">
 				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="menu">
 				<ul class="nav navbar-nav" id="menu_contato">
-					<li><a class="linked" href="crud-system?acao=ListarContato">Lista Contatos</a></li>
-					<li><a class="linked" href="AdicionarContato.jsp">Adiciona Contatos</a></li>
+					<li><a class="linked" href="#list">Lista Contatos</a></li>
+					<li><a class="linked" href="#add">Adiciona Contatos</a></li>
 					
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -58,14 +49,11 @@
 			</div>
 		</div>
 	</nav>
-	<div id="conteudo">	
+	<div ng-view>	
 		
 	</div>
-	
-	Seja bem vindo ${usuarioAutenticado.nome} ao sistema de contatos	
-		
-		
-	
+
+	Seja bem vindo ${usuarioAutenticado.nome} ao sistema de contatos
 
 	 
 	  <footer  class="navbar-fixed-bottom">
@@ -73,7 +61,12 @@
 		  		<span class="text-muted">Copyright 2010 - Todos os direitos reservados</span>
 		  </div>
 	  </footer>
-	   <script src="resources/js/jquery-2.2.4.min.js"></script>
+	
+	  <script  src="resources/lib/angular/angular.js"></script>
+	  <script  src="resources/lib/angular/angular-route.js"></script>
+	  <script  src="resources/js/app.js"></script>
+	  <script  src="resources/js/config/routeConfig.js" ></script>
+	  <script src="resources/js/jquery-2.2.4.min.js"></script>
 	  <script src="resources/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

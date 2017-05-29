@@ -30,9 +30,5 @@
 
 	</table>
 	<hr>
-	<a href="AdicionarContato.jsp"> Novo Contato</a>
-	<a href="Index.jsp"> Início</a>
-
-
 </body>
 </html>

@@ -1,24 +1,46 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ include file="includes.jsp"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Acessar Sistema Contatos</title>
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>Login Contatos</title>
+		
+		<link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="resources/css/estilo.css" rel="stylesheet">	
+	</head>
 <body>
-	<c:import url="cabecalho.jsp"></c:import>
-	${usuarioAutenticado.nome}
-	<form action="crud-system?acao=AutenticaUsuario" method="post"
-		id="formLogar">
-		Login: <input type="text" name="login"> Senha: <input
-			type="password" name="senha"> <input type="submit"
-			value="Entrar no sistema">
+	 <div class="login-form col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+	 <div class="teste">
+		 <header>
+		 	<img class="img-responsive" alt="logo" src="resources/imagens/logo.png">
+		 </header>
+			<form action="crud-system?acao=AutenticaUsuario" method="post" id="formLogar" accept-charset="utf-8">			
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">
+							<span class="glyphicon glyphicon-user"></span>				 
+						</div>
+							<input type="text" name="login" class="form-control" placeholder="Usuário" required>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">
+							<span class="glyphicon glyphicon-option-horizontal"></span>				 
+						</div>
+							<input type="password" name="senha" class="form-control" placeholder="Senha" required>
+					</div>
+				</div>
+									
+			</form>
+		<div>
+			<button type="submit" form="formLogar" class="btn btn-primary" >Entrar</button>
+			<p>${msgUsuario}</p>
+		</div>	
+		</div>
+	</div>
 
-	</form>
-	<p>${msgUsuario}</p>
-	<hr>
-	<c:import url="rodape.jsp"></c:import>
 </body>
 </html>

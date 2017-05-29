@@ -13,7 +13,7 @@ public class LogoutLogica implements Logica {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("usuarioAutenticado", null);	
-		response.sendRedirect("login2.jsp");
+		response.sendRedirect("Login.jsp");
 	}
 
 }

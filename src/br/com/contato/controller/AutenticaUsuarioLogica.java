@@ -27,12 +27,11 @@ public class AutenticaUsuarioLogica implements Logica {
 
 		if (usuarioAutenticado != null) {
 			session.setAttribute("usuarioAutenticado", usuarioAutenticado);
-			response.sendRedirect("Index.jsp");
+			response.sendRedirect("Index.jsp");		
 		}
 		if (usuarioAutenticado == null) {
 			session.setAttribute("msgUsuario", "Login ou Senha inválidos!!!");
-			//response.sendRedirect("Login.jsp");
-			response.sendRedirect("login2.jsp");
+			response.sendRedirect("Login.jsp");			
 		}
 	}
 

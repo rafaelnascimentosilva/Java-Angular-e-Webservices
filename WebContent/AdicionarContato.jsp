@@ -1,19 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ include file="includes.jsp"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>NOVO CONTATO</title>
-<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="js/jquery.inputmask.js"></script>
-<script type="text/javascript" src="js/mascara.js"></script>
-<script type="text/javascript" src="js/jquery.validate.min.js"></script>
-
-</head>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">	
+		
+		<title>NOVO CONTATO</title>
+		
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery.inputmask.js"></script>
+		<script type="text/javascript" src="js/mascara.js"></script>
+		<script type="text/javascript" src="js/jquery.validate.min.js"></script>
+	
+	</head>
 <body>
-
 
 	<form action="crud-system" method="get" id="formInserir">
 		<input type="hidden" name="acao" value="AdicionarContato">
@@ -37,8 +36,6 @@
 				<td><input type="submit" value="Cadastar"></td>
 			</tr>
 		</table>
-	</form>
-	<button onclick="location.href='crud-system?acao=ListarContato'">Voltar</button>
-	
+	</form>	
 </body>
 </html>
