@@ -5,9 +5,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Tela de Menu</title>
 		<link rel="stylesheet" type="text/css"  href="resources/bootstrap/css/bootstrap.min.css">
-		<link  rel="stylesheet" type="text/css" href="resources/css/estilo.css">		
+		<link  rel="stylesheet" type="text/css" href="resources/css/estilo.css">	
+		<script  src="resources/lib/angular/angular.js"></script>
+	  	<script  src="resources/lib/angular/angular-route.js"></script>
+	  	<script  src="resources/js/app.js"></script>
+	  	<script  src="resources/js/config/routeConfig.js" ></script>
+	  	<script src="resources/js/jquery-2.2.4.min.js"></script>
+	 	 <script src="resources/bootstrap/js/bootstrap.min.js"></script>	
 	</head>
-<body ng-app="listaDeContatos">
+<body ng-app="listaDeContatos"  ng-controller="listaDeContatosCtrl">
 
 	<nav class="navbar navbar-inverse navbar-static-top ">
 		<div class="container">
@@ -60,11 +66,6 @@
 		  </div>
 	  </footer>
 	 -->
-	  <script  src="resources/lib/angular/angular.js"></script>
-	  <script  src="resources/lib/angular/angular-route.js"></script>
-	  <script  src="resources/js/app.js"></script>
-	  <script  src="resources/js/config/routeConfig.js" ></script>
-	  <script src="resources/js/jquery-2.2.4.min.js"></script>
-	  <script src="resources/bootstrap/js/bootstrap.min.js"></script>
+	
 </body>
 </html>

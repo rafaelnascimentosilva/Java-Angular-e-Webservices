@@ -2,6 +2,8 @@ package br.com.contato.modelo;
 
 import java.util.Calendar;
 
+import javax.xml.bind.annotation.XmlRootElement;
+@XmlRootElement
 public class Contato {
 	public int getId() {
 		return id;

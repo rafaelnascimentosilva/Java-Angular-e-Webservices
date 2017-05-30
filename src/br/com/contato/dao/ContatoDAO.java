@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import com.sun.org.apache.regexp.internal.recompile;
-
 import br.com.contato.modelo.Contato;
 
 public class ContatoDAO {
@@ -64,6 +62,7 @@ public class ContatoDAO {
 		
 		
 	}
+	
 	public List<Contato> getLista() {
 		try {
 			PreparedStatement statement = this.connection.prepareStatement("select * from tbcontato");

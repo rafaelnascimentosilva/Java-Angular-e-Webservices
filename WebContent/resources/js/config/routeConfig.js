@@ -11,4 +11,7 @@ angular.module("listaDeContatos").config(function($routeProvider){
 	$routeProvider.when("/list",{
 		templateUrl: "crud-system?acao=ListarContato"
 		});
+	$routeProvider.when("/delet",{
+		templateUrl: "crud-system?acao=ListarContato"
+		});
 });
