@@ -4,11 +4,11 @@ angular.module("listaDeContatos").controller("listaDeContatosCtrl",function($sco
 	$scope.contatos = [];
 	
 	
-	var carregaContatos = function(){	
+	var carregaContatos = function(){		
+		$http.get("http://localhost:8080/project-contatos/rest/contato/contatos").success(function (data) {
+		$scope.contatos = data;
 		
-		$http.get("http://localhost:8080/project-contatos/contato/contatos").then(function (response) {
-			$scope.contatos = response.data;
-			});
+		});
 	}
 	carregaContatos();
 });

@@ -23,6 +23,7 @@
 	<div class="row cabecalho">
 		<div class="col-xs-12 col-md-6">
 			<h1 ng-bind="app"></h1>
+			<!-- <h2 >{{contatos}}</h2>-->
 		</div>		
 		<div class="col-xs-12 col-md-4 col-md-offset-2 busca">
 			<div class="input-group">
