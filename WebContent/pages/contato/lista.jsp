@@ -1,19 +1,18 @@
 <html ng-app="listaDeContatos">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css"
-	href="../../resources/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="../../resources/css/estilo.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css"	href="../../resources/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css"	href="../../resources/css/estilo.css">
 
-<script src="../../resources/lib/angular/angular.js"></script>
-<script src="../../resources/lib/angular/angular-route.js"></script>
-<script src="../../resources/js/app.js"></script>
-<script src="../../resources/js/config/routeConfig.js"></script>
-<script src="../../resources/js/jquery-2.2.4.min.js"></script>
-<script src="../../resources/bootstrap/js/bootstrap.min.js"></script>
-
+	<script src="../../resources/lib/angular/angular.js"></script>
+	<script src="../../resources/lib/angular/angular-route.js"></script>
+	<script src="../../resources/js/app.js"></script>
+	<script src="../../resources/js/config/routeConfig.js"></script>
+	<script src="../../resources/js/jquery-2.2.4.min.js"></script>
+	<script src="../../resources/bootstrap/js/bootstrap.min.js"></script>
 </head>
+
 <body ng-controller="listaDeContatosCtrl">
 	<form action="crud-system" method="get">
 		<input type="hidden" name="acao" value="listar">
@@ -43,7 +42,6 @@
 				<th>Data de Nascimento</th>
 				<th class="text-center">Ações</th>
 			</tr>
-
 			<tbody ng-repeat="c in contatos">
 				<tr ng-repeat="contato in c">
 					<td>{{contato.nome}}</td>
