@@ -3,11 +3,10 @@ angular.module("listaDeContatos").controller("listaDeContatosCtrl",function($sco
 	$scope.app = "LISTA DE CONTATOS";
 	$scope.contatos = [];
 	
-	
 	var carregaContatos = function(){		
-		$http.get("http://localhost:8080/project-contatos/rest/contato/contatos").success(function (data) {
-		$scope.contatos = data;
-		
+		$http.get("http://localhost:8080/project-contatos/rest/contato/contatos?callback=JSON_CALLBACK").then(function (response) {
+		$scope.contatos = response.data;
+	
 		});
 	}
 	carregaContatos();
