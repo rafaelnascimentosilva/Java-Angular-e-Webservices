@@ -3,6 +3,7 @@ package br.com.contato.api;
 import java.util.List;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
@@ -21,5 +22,11 @@ public class ContatoService {
 	@Produces("application/json")
 	public List<Contato> contatos(){
 		return new ContatoDAO(connection).getLista();
+	}
+	
+	@POST
+	public void Adiciona( Contato contato){
+		 new ContatoDAO(connection).inserir(contato);
+		
 	}
 }
