@@ -14,9 +14,7 @@
 </head>
 
 <body ng-controller="listaDeContatosCtrl">
-	<form action="crud-system" method="get">
-		<input type="hidden" name="acao" value="listar">
-	</form>
+	
 	<div class="row cabecalho">
 		<div class="col-xs-12 col-md-6">
 			<h1 ng-bind="app"></h1>
@@ -33,6 +31,22 @@
 				</span>
 			</div>
 		</div>
+	</div>
+	<div>
+		<form>
+			<h1>Cadastro</h1>
+			<label for="nome"> Nome:</label>
+			<input id="nome" name="nome" type="text" ng-model="contatos.nome">
+			<br>
+			<label for="fone"> Fone:</label>
+			<input id="fone" name="fone" type="text" ng-model="contatos.fone">
+			<br>
+			<label for="nascimento"> Nascimento:</label>
+			<input id="nascimento" name="nascimento" type="text" ng-model="contatos.nascimento">
+			<br>
+			<button ng-click="salvar(contatos)"> Salvar</button>
+		</form>
+		{{contatos.nome}}
 	</div>
 	<div class="table-responsive">
 		<table class="table table-striped table-bordered table-hover">

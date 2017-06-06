@@ -1,5 +1,6 @@
 package br.com.contato.api;
 
+import java.text.ParseException;
 import java.util.List;
 
 import javax.ws.rs.GET;
@@ -25,7 +26,7 @@ public class ContatoService {
 	}
 	
 	@POST
-	public void Adiciona( Contato contato){
+	public void Adiciona( Contato contato) throws ParseException{
 		 new ContatoDAO(connection).inserir(contato);
 		
 	}
