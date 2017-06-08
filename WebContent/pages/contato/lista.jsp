@@ -32,23 +32,41 @@
 			</div>
 		</div>
 	</div>
-	<div>
-		<form>
-			<h1>Cadastro</h1>
-			<label for="nome"> Nome:</label>
-			<input id="nome" name="nome" type="text" ng-model="contatos.nome">
-			<br>
-			<label for="fone"> Fone:</label>
-			<input id="fone" name="fone" type="text" ng-model="contatos.fone">
-			<br>
-			<label for="nascimento"> Nascimento:</label>
-			<input id="nascimento" name="nascimento" type="text" ng-model="contatos.nascimento">
-			<br>
-			<button ng-click="salvar(contatos)"> Salvar</button>
-		</form>
-		{{contatos.nome}}
+	
+	<div class="modal fade" id="novoContato" >
+		<div class="modal-dialog">
+			<div class="modal-content">
+			<div>
+				<form>
+					<div class="modal-header">
+						<h1>Cadastro</h1>
+					</div>
+					<div class="modal-body">
+						<label for="nome"> Nome:</label>
+						<input id="nome" name="nome" type="text" ng-model="contatos.nome">
+						<br>
+						
+						<label for="fone"> Fone:</label>
+						<input id="fone" name="fone" type="text" ng-model="contatos.fone">
+						<br>
+						<label for="nascimento"> Nascimento:</label>
+						<input id="nascimento" name="nascimento" type="text" ng-model="contatos.nascimento">
+						<br>
+					</div>
+					<div class="modal-footer">
+					<button class="btn btn-primary" data-backdrop="static" data-toggle="modal" data-target="#novoContato"   ng-click="salvar(contatos)"> Salvar</button>
+					</div>
+				</form>
+			</div>
+	
+			</div>
+		</div>
 	</div>
-	<div class="table-responsive">
+	
+	<div>
+		<button class="btn btn-primary" data-toggle="modal" data-target="#novoContato">Novo Contato</button>
+	</div>
+	<div class="table-responsive" >
 		<table class="table table-striped table-bordered table-hover">
 			<tr>
 				<th>Nome</th>
