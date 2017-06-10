@@ -6,6 +6,7 @@ import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import com.mysql.jdbc.Connection;
@@ -27,7 +28,13 @@ public class ContatoService {
 	
 	@POST
 	public void Adiciona( Contato contato) throws ParseException{
-		 new ContatoDAO(connection).inserir(contato);
-		
+		 new ContatoDAO(connection).inserir(contato);		
+	}
+	
+	@GET
+	@Path("{id}")	
+	@Produces("application/json")
+	public Contato getContato(@PathParam("id") Integer id){
+		 return new ContatoDAO(connection).getContato(id);
 	}
 }

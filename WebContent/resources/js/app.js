@@ -27,4 +27,9 @@ app.service("ContatoService",function($http){
 	this.salvar = function(contatos){
 		return $http.post("http://localhost:8080/project-contatos/rest/contato",contatos);
 	};
+	
+	this.deletar = function(contatos){
+		return $http.delete();
+	};
+	
 });

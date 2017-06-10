@@ -34,35 +34,34 @@ public class ContatoDAO {
 		}
 	}
 
-	public List<Contato> listaPaginada(int paginaInicio, int paginaLimite){
+	public List<Contato> listaPaginada(int paginaInicio, int paginaLimite) {
 		try {
 			PreparedStatement statement = this.connection.prepareStatement("SELECT * FROM tbcontato LIMIT ? OFFSET ?");
 			statement.setInt(1, paginaLimite);
 			statement.setInt(2, paginaInicio);
 			ResultSet rs = statement.executeQuery();
-			List<Contato> paginacao =  new ArrayList<Contato>();
+			List<Contato> paginacao = new ArrayList<Contato>();
 			while (rs.next()) {
 				Contato contato = new Contato();
-					contato.setId(new Integer(rs.getString("id")));
-					contato.setNome(rs.getString("nome"));
-					contato.setFone(rs.getString("fone"));
+				contato.setId(new Integer(rs.getString("id")));
+				contato.setNome(rs.getString("nome"));
+				contato.setFone(rs.getString("fone"));
 				Calendar nascimento = Calendar.getInstance();
-					nascimento.setTime(rs.getDate("nascimento"));
-					contato.setNascimento(nascimento);
-					paginacao.add(contato);
+				nascimento.setTime(rs.getDate("nascimento"));
+				contato.setNascimento(nascimento);
+				paginacao.add(contato);
 			}
-			
+
 			rs.close();
-			statement.close();			
+			statement.close();
 			return paginacao;
-			
-		}catch (SQLException e) {
+
+		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-		
-		
+
 	}
-	
+
 	public List<Contato> getLista() {
 		try {
 			PreparedStatement statement = this.connection.prepareStatement("select * from tbcontato");
@@ -89,6 +88,30 @@ public class ContatoDAO {
 		}
 	}
 
+	public Contato getContato(Integer id) {
+		String sql = "select * from tbcontato where id=?";
+		try {
+			PreparedStatement statement = this.connection.prepareStatement(sql);
+			statement.setLong(1,id);
+			Contato contato = new Contato();
+			ResultSet rs = statement.executeQuery();
+			while (rs.next()) {
+				contato.setId(new Integer(rs.getString("id")));
+				contato.setNome(rs.getString("nome"));
+				contato.setFone(rs.getString("fone"));
+				Calendar nascimento = Calendar.getInstance();
+				nascimento.setTime(rs.getDate("nascimento"));
+				contato.setNascimento(nascimento);
+			}
+			rs.close();
+			statement.close();
+			return contato;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+	}
+
 	public void deletar(Contato contato) {
 
 		String sql = "delete from tbcontato where id=?";
@@ -98,7 +121,6 @@ public class ContatoDAO {
 			statement.execute();
 			statement.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			throw new RuntimeException(e);
 		}
 	}
