@@ -112,12 +112,12 @@ public class ContatoDAO {
 
 	}
 
-	public void deletar(Contato contato) {
+	public void deletar(Integer id) {
 
 		String sql = "delete from tbcontato where id=?";
 		try {
 			PreparedStatement statement = this.connection.prepareStatement(sql);
-			statement.setLong(1, contato.getId());
+			statement.setLong(1, id);
 			statement.execute();
 			statement.close();
 		} catch (SQLException e) {

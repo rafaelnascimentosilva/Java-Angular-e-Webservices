@@ -35,9 +35,9 @@ public class ContatoService {
 	}
 
 	@DELETE
-	@Path("{id}")
+	@Path("/{id}")
 	public void Deleta(@PathParam("id") Integer id) throws ParseException {
-		//new ContatoDAO(connection).deletar(id);
+		new ContatoDAO(connection).deletar(id);
 	}
 
 	@PUT

@@ -20,7 +20,7 @@ public class DeletarContatoLogica implements Logica {
 		ContatoDAO dao = new ContatoDAO(connection);
 		Contato contato = new Contato();
 		contato.setId(new Integer(id));
-		dao.deletar(contato);
+		//dao.deletar(contato);
 		response.sendRedirect("sucesso.jsp");
 	}
 }

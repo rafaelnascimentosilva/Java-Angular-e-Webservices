@@ -15,6 +15,10 @@ app.controller("listaDeContatosCtrl",function($scope,ContatoService){
 		$scope.contatos = {};
 	};
 	
+	$scope.deletar = function(contatos){
+		ContatoService.deletar(contatos).then(listar);
+	};
+	
 	listar();
 });
 
@@ -29,7 +33,7 @@ app.service("ContatoService",function($http){
 	};
 	
 	this.deletar = function(contatos){
-		return $http.delete();
+		return $http.delete("http://localhost:8080/project-contatos/rest/contato/"+contatos.id);
 	};
 	
 });
