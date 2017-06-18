@@ -3,6 +3,7 @@ package br.com.contato.api;
 import java.text.ParseException;
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -19,6 +20,7 @@ import br.com.contato.modelo.Contato;
 
 @Path("/contato")
 @Produces("application/json")
+
 public class ContatoService {
 
 	Connection connection = (Connection) new ConnectionFactory().getConnecticon();
@@ -39,11 +41,12 @@ public class ContatoService {
 	public void Deleta(@PathParam("id") Integer id) throws ParseException {
 		new ContatoDAO(connection).deletar(id);
 	}
-
+	
 	@PUT
-	@Path("{id}")
-	public void Atualiza(@PathParam("id") Integer id, Contato contato) throws ParseException {
-
+	@Consumes("application/json")	
+	@Path("{id}")	
+	public Contato Atualiza(@PathParam("id") Integer id, Contato contato) throws ParseException {
+		return new ContatoDAO(connection).alterar(contato);
 	}
 
 	@GET

@@ -125,7 +125,8 @@ public class ContatoDAO {
 		}
 	}
 
-	public void alterar(Contato contato) {
+	
+	public Contato alterar(Contato contato) {
 		String sql = "update tbcontato set nome=?, fone=?, nascimento=? where id=?";
 		try {
 			PreparedStatement statement = this.connection.prepareStatement(sql);
@@ -135,6 +136,7 @@ public class ContatoDAO {
 			statement.setLong(4, contato.getId());
 			statement.execute();
 			statement.close();
+			return contato;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			throw new RuntimeException(e);
