@@ -59,7 +59,6 @@
 			</div>
 		</div>
 	</div>
-	
 	<div>
 		<button class="btn btn-primary" data-toggle="modal" data-target="#novoContato">Novo Contato</button>
 	</div>
@@ -76,9 +75,9 @@
 					<td>{{contato.nome}}</td>
 					<td>{{contato.fone}}</td>
 					<td>{{contato.nascimento}}</td>
-					<td class="text-center"><a href=""><span
-							class="glyphicon-pencil text-warning "></span></a> <a href="" ng-click="deletar(contato)"><span
-							class="glyphicon glyphicon-trash text-danger"></span></a></td>
+					<td class="text-center">
+					<a href=""  ng-click="atualizar(contato)"><span class="glyphicon-pencil text-warning "  data-toggle="modal" data-target="#novoContato"></span></a> 
+					<a href="" ng-click="deletar(contato)">	<span class="glyphicon glyphicon-trash text-danger"></span></a></td>
 
 				</tr>
 			</tbody>

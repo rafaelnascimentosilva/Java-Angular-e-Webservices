@@ -20,7 +20,7 @@ app.controller("listaDeContatosCtrl",function($scope,ContatoService){
 	};
 	
 	$scope.atualizar = function(contatos){
-		ContatoService.atualizar(contatos).then(listar);
+		$scope.contatos = angular.copy(contatos);
 	};
 	
 	listar();
@@ -33,11 +33,11 @@ app.service("ContatoService",function($http){
 	};
 	
 	this.salvar = function(contatos){
-		return $http.post("http://localhost:8080/project-contatos/rest/contato",contatos);
-	};
-	
-	this.atualizar = function(contatos){
-		return $http.put("http://localhost:8080/project-contatos/rest/contato/",contatos);
+		if (contatos.id) {
+			return $http.put("http://localhost:8080/project-contatos/rest/contato/"+contatos.id,contatos);
+		} else {
+			return $http.post("http://localhost:8080/project-contatos/rest/contato",contatos);
+		}		
 	};
 	
 	this.deletar = function(contatos){
