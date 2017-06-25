@@ -1,8 +1,7 @@
 var app = angular.module("listaDeContatos",["ngRoute"]);
 app.controller("listaDeContatosCtrl",function($scope,ContatoService){
 	$scope.app = "LISTA DE CONTATOS";
-	$scope.contatos = {};
-	
+	$scope.contatos = {};	
 	
 	function listar(){
 		ContatoService.listar().then(function (response) {//o then serve para dizer ao angular que só mostre quando todos os dados estiveren carregados
@@ -16,11 +15,13 @@ app.controller("listaDeContatosCtrl",function($scope,ContatoService){
 	};
 	
 	$scope.deletar = function(contatos){
-		ContatoService.deletar(contatos).then(listar);
+		if(confirm("Deseja Excluir?")){
+			ContatoService.deletar(contatos).then(listar);
+		}
 	};
 	
-	$scope.atualizar = function(contatos){
-		$scope.contatos = angular.copy(contatos);
+	$scope.atualizar = function(contatos){		
+			$scope.contatos = angular.copy(contatos);		
 	};
 	
 	listar();
