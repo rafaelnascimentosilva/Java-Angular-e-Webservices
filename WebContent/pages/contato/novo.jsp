@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ include file="../../includes.jsp"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,7 +16,7 @@
 <body>	
 	<div class="container">
 		<div class="jumbotron">
-			<c:import url="../../cabecalho.jsp"></c:import>
+			
 				<form class="form-signin" action="../../crud-system" method="get" id="formInserir">
 					<input type="hidden" name="acao" value="AdicionarContato">
 						<div class="form-group row ">					
@@ -36,7 +36,7 @@
 				</form>
 				<button class="btn btn-lg btn-primary" type="submit" form="formInserir" value="Cadastrar"> Cadastrar</button>
 				<button class="btn btn-lg btn-primary" onclick="location.href='../../crud-system?acao=ListarContato'">Voltar</button>	
-			<c:import url="../../rodape.jsp"></c:import>
+			
 		</div>
 	</div>
 </body>

@@ -21,7 +21,7 @@ app.controller("listaDeContatosCtrl",function($scope,ContatoService){
 	};
 	
 	$scope.atualizar = function(contatos){		
-			$scope.contatos = angular.copy(contatos);		
+		$scope.contatos = angular.copy(contatos);			
 	};
 	
 	listar();
