@@ -1,7 +1,16 @@
 body {
 	min-height: 100vh;
 }
-
+.jumbotron{
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+.novo{
+	
+	 left: 3em;
+}
 .login-form {
 	margin-top: 50vh;
 	color: #FFF;
@@ -26,11 +35,15 @@ body {
 }
 
 .cabecalho{
-	margin-bottom: 10px
+	margin-bottom: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
 }
-.cabecalho h1{
+.cabecalho h5{
 	margin: 0;
-	font-size: 3em;
+	font-size: 2em;
+	
 }
 .busca{
 	margin-top: 7px;

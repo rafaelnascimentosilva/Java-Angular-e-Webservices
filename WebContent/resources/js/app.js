@@ -1,6 +1,6 @@
-var app = angular.module("listaDeContatos",["ngRoute"]);
+var app = angular.module("listaDeContatos",[]);
 app.controller("listaDeContatosCtrl",function($scope,ContatoService){
-	$scope.app = "LISTA DE CONTATOS";
+	$scope.app = "Lista Telefônica";
 	$scope.contatos = {};	
 	
 	function listar(){
