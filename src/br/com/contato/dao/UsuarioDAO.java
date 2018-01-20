@@ -18,7 +18,7 @@ public class UsuarioDAO {
 
 		try {
 			PreparedStatement statement = this.connection
-					.prepareStatement("select * from tbusuario where login =? and senha=?");
+					.prepareStatement("select * from tb_usuario where login =? and senha=?");
 			statement.setString(1, login);
 			statement.setString(2, senha);
 			

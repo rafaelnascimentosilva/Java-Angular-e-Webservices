@@ -1,4 +1,4 @@
-var app = angular.module("listaDeContatos",[]);
+var app = angular.module("listaDeContatos",['ngMask']);
 app.controller("listaDeContatosCtrl",function($scope,ContatoService){
 	$scope.app = "Lista Telefônica";
 	$scope.contatos = {};	

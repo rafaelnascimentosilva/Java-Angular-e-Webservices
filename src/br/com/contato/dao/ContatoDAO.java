@@ -19,7 +19,7 @@ public class ContatoDAO {
 	}
 
 	public void inserir(Contato contato) {
-		String sql = "insert into tbcontato(nome,fone,nascimento)values(?,?,?)";
+		String sql = "insert into tb_contato(nome,fone,nascimento)values(?,?,?)";
 		try {
 			PreparedStatement statement = this.connection.prepareStatement(sql);
 			statement.setString(1, contato.getNome());
@@ -36,14 +36,14 @@ public class ContatoDAO {
 
 	public List<Contato> listaPaginada(int paginaInicio, int paginaLimite) {
 		try {
-			PreparedStatement statement = this.connection.prepareStatement("SELECT * FROM tbcontato LIMIT ? OFFSET ?");
+			PreparedStatement statement = this.connection.prepareStatement("SELECT * FROM tb_contato LIMIT ? OFFSET ?");
 			statement.setInt(1, paginaLimite);
 			statement.setInt(2, paginaInicio);
 			ResultSet rs = statement.executeQuery();
 			List<Contato> paginacao = new ArrayList<Contato>();
 			while (rs.next()) {
 				Contato contato = new Contato();
-				contato.setId(new Integer(rs.getString("id")));
+				contato.setId(new Integer(rs.getString("id_contato")));
 				contato.setNome(rs.getString("nome"));
 				contato.setFone(rs.getString("fone"));
 				Calendar nascimento = Calendar.getInstance();
@@ -64,14 +64,14 @@ public class ContatoDAO {
 
 	public List<Contato> getLista() {
 		try {
-			PreparedStatement statement = this.connection.prepareStatement("select * from tbcontato");
+			PreparedStatement statement = this.connection.prepareStatement("select * from tb_contato");
 
 			ResultSet rs = statement.executeQuery();
 			List<Contato> listaDeContatos = new ArrayList<Contato>();
 
 			while (rs.next()) {
 				Contato contato = new Contato();
-				contato.setId(new Integer(rs.getString("id")));
+				contato.setId(new Integer(rs.getString("id_contato")));
 				contato.setNome(rs.getString("nome"));
 				contato.setFone(rs.getString("fone"));
 				Calendar nascimento = Calendar.getInstance();
@@ -89,14 +89,14 @@ public class ContatoDAO {
 	}
 
 	public Contato getContato(Integer id) {
-		String sql = "select * from tbcontato where id=?";
+		String sql = "select * from tb_contato where id_contato=?";
 		try {
 			PreparedStatement statement = this.connection.prepareStatement(sql);
 			statement.setLong(1,id);
 			Contato contato = new Contato();
 			ResultSet rs = statement.executeQuery();
 			while (rs.next()) {
-				contato.setId(new Integer(rs.getString("id")));
+				contato.setId(new Integer(rs.getString("id_contato")));
 				contato.setNome(rs.getString("nome"));
 				contato.setFone(rs.getString("fone"));
 				Calendar nascimento = Calendar.getInstance();
@@ -114,7 +114,7 @@ public class ContatoDAO {
 
 	public void deletar(Integer id) {
 
-		String sql = "delete from tbcontato where id=?";
+		String sql = "delete from tb_contato where id_contato=?";
 		try {
 			PreparedStatement statement = this.connection.prepareStatement(sql);
 			statement.setLong(1, id);
@@ -127,7 +127,7 @@ public class ContatoDAO {
 
 	
 	public Contato alterar(Contato contato) {
-		String sql = "update tbcontato set nome=?, fone=?, nascimento=? where id=?";
+		String sql = "update tb_contato set nome=?, fone=?, nascimento=? where id_contato=?";
 		try {
 			PreparedStatement statement = this.connection.prepareStatement(sql);
 			statement.setString(1, contato.getNome());

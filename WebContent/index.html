@@ -31,7 +31,8 @@
 									<input id="fone" name="fone" type="text" ng-model="contatos.fone" class="form-control">
 									<br>
 									<label for="nascimento"> Nascimento:</label>
-									<input id="nascimento" name="nascimento" type="text" ng-model="contatos.nascimento" class="form-control">
+									<input id="nascimento" name="nascimento" type="text" ng-model="contatos.nascimento"   mask='39/19/9999'  class="form-control" >
+								
 									<br>
 								</div>
 							</div>
@@ -66,14 +67,14 @@
 			<tr>
 				<th>Nome</th>
 				<th>Telefone</th>
-			<!-- 	<th>Data de Nascimento</th> -->
+				<th>Data de Nascimento</th>
 				<th class="text-center">Ações</th>
 			</tr>
 			<tbody ng-repeat="c in contatos">
 				<tr ng-repeat="contato in c">
 					<td>{{contato.nome}}</td>
 					<td>{{contato.fone}}</td>
-				<!-- 	<td>{{contato.nascimento}}</td> -->
+				 	<td>{{contato.nascimento}}</td>
 					<td class="text-center">
 					<a href=""  ng-click="atualizar(contato)"><span class="glyphicon-pencil text-warning "  data-toggle="modal" data-target="#novoContato"></span></a> 
 					<a href=""  ng-click="deletar(contato)" >	<span class="glyphicon glyphicon-trash text-danger"></span></a></td>
@@ -88,9 +89,10 @@
 </div>
 
 
-	<script src="resources/lib/angular/angular.js"></script>	
-	<script src="resources/js/app.js"></script>	
+	<script src="resources/lib/angular/angular.js"></script>
+	<script src="resources/lib/angular/ngMask.min.js"></script>	
 	<script src="resources/js/jquery-2.2.4.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="resources/js/app.js"></script>	
 </body>
 </html>

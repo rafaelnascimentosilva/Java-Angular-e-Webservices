@@ -13,6 +13,8 @@ public static void main(String[] args) throws SQLException {
 		Connection connection = new ConnectionFactory().getConnecticon();
 		
 		/*** CHAMANDO O METODO DE PAGINACAO ***/		
+		
+		System.out.println(connection.toString());
 			
 		/*
 		 	ContatoDAO dao = new ContatoDAO(connection);		
@@ -50,13 +52,13 @@ public static void main(String[] args) throws SQLException {
 //		connection.close();
 //		
 		
-		ContatoDAO dao = new ContatoDAO(connection);
+		/*ContatoDAO dao = new ContatoDAO(connection);
 		Contato contato = new Contato();
 		 contato = dao.getContato(119);
 		
 		System.out.print(contato.getId());
 		System.out.print(contato.getNome());
 		System.out.print(contato.getFone());
-		System.out.print(contato.getNascimento().getTimeZone());
+		System.out.print(contato.getNascimento().getTimeZone());*/
 	}
 }
