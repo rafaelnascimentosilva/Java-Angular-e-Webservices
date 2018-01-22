@@ -2,15 +2,14 @@ package br.com.contato.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.sql.Date;
 
-public class  ConverteData {
-	public  Calendar convertStringInData(String data) throws ParseException{
-		Calendar nova_data_convertida;
-		Date data_convertida = new SimpleDateFormat("dd/MM/yyyy").parse(data);
-		nova_data_convertida = Calendar.getInstance();
-		nova_data_convertida.setTime(data_convertida);
-		return 	nova_data_convertida;
+public class ConverteData {
+	public static Date convertStringInData(String data) throws ParseException {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+		java.util.Date formatado = dateFormat.parse(data);
+		java.sql.Date sqlDate = new java.sql.Date(formatado.getTime());
+		return sqlDate;
 	}
+
 }

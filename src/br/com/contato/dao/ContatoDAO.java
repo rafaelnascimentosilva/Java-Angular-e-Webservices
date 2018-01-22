@@ -1,15 +1,15 @@
 package br.com.contato.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import br.com.contato.modelo.Contato;
+import br.com.contato.util.ConverteData;
 
 public class ContatoDAO {
 	private Connection connection;
@@ -18,13 +18,13 @@ public class ContatoDAO {
 		this.connection = connection;
 	}
 
-	public void inserir(Contato contato) {
+	public void inserir(Contato contato) throws ParseException {
 		String sql = "insert into tb_contato(nome,fone,nascimento)values(?,?,?)";
 		try {
 			PreparedStatement statement = this.connection.prepareStatement(sql);
 			statement.setString(1, contato.getNome());
 			statement.setString(2, contato.getFone());
-			statement.setDate(3, new Date(contato.getNascimento().getTimeInMillis()));
+			statement.setDate(3, ConverteData.convertStringInData(contato.getNascimento()));
 			statement.execute();
 			statement.close();
 
@@ -46,9 +46,6 @@ public class ContatoDAO {
 				contato.setId(new Integer(rs.getString("id_contato")));
 				contato.setNome(rs.getString("nome"));
 				contato.setFone(rs.getString("fone"));
-				Calendar nascimento = Calendar.getInstance();
-				nascimento.setTime(rs.getDate("nascimento"));
-				contato.setNascimento(nascimento);
 				paginacao.add(contato);
 			}
 
@@ -62,7 +59,7 @@ public class ContatoDAO {
 
 	}
 
-	public List<Contato> getLista() {
+	public List<Contato> getLista() throws ParseException {
 		try {
 			PreparedStatement statement = this.connection.prepareStatement("select * from tb_contato");
 
@@ -74,9 +71,7 @@ public class ContatoDAO {
 				contato.setId(new Integer(rs.getString("id_contato")));
 				contato.setNome(rs.getString("nome"));
 				contato.setFone(rs.getString("fone"));
-				Calendar nascimento = Calendar.getInstance();
-				nascimento.setTime(rs.getDate("nascimento"));
-				contato.setNascimento(nascimento);
+				contato.setNascimento(rs.getString("nascimento"));
 				listaDeContatos.add(contato);
 			}
 
@@ -92,16 +87,14 @@ public class ContatoDAO {
 		String sql = "select * from tb_contato where id_contato=?";
 		try {
 			PreparedStatement statement = this.connection.prepareStatement(sql);
-			statement.setLong(1,id);
+			statement.setLong(1, id);
 			Contato contato = new Contato();
 			ResultSet rs = statement.executeQuery();
 			while (rs.next()) {
 				contato.setId(new Integer(rs.getString("id_contato")));
 				contato.setNome(rs.getString("nome"));
 				contato.setFone(rs.getString("fone"));
-				Calendar nascimento = Calendar.getInstance();
-				nascimento.setTime(rs.getDate("nascimento"));
-				contato.setNascimento(nascimento);
+				contato.setNascimento(rs.getString("nascimento"));
 			}
 			rs.close();
 			statement.close();
@@ -109,7 +102,6 @@ public class ContatoDAO {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-
 	}
 
 	public void deletar(Integer id) {
@@ -125,20 +117,20 @@ public class ContatoDAO {
 		}
 	}
 
-	
-	public Contato alterar(Contato contato) {
+	public Contato alterar(Contato contato) throws ParseException {
 		String sql = "update tb_contato set nome=?, fone=?, nascimento=? where id_contato=?";
 		try {
 			PreparedStatement statement = this.connection.prepareStatement(sql);
 			statement.setString(1, contato.getNome());
 			statement.setString(2, contato.getFone());
-			statement.setDate(3, new Date(contato.getNascimento().getTimeInMillis()));
+			// statement.setDate(3, new
+			// Date(contato.getNascimento().getTimeInMillis()));
+			statement.setDate(3, ConverteData.convertStringInData(contato.getNascimento()));
 			statement.setLong(4, contato.getId());
 			statement.execute();
 			statement.close();
 			return contato;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			throw new RuntimeException(e);
 		}
 	}

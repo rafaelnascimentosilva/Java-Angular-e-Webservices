@@ -1,27 +1,34 @@
 var app = angular.module("listaDeContatos",['ngMask']);
-app.controller("listaDeContatosCtrl",function($scope,ContatoService){
+app.controller("listaDeContatosCtrl",function($scope,ContatoService,$http){
 	$scope.app = "Lista Telefônica";
-	$scope.contatos = {};	
+	$scope.contatos=[];	
 	
 	function listar(){
 		ContatoService.listar().then(function (response) {//o then serve para dizer ao angular que só mostre quando todos os dados estiveren carregados
-			$scope.contatos = response.data;
+			$scope.contatos = response.data.contato;
+			//console.log(response);
+			
 		});
 	}
 	
 	$scope.salvar = function(contatos){
 		ContatoService.salvar(contatos).then(listar);
-		$scope.contatos = {};
+		
+		$scope.contatos = [];
+		console.log($scope.contatos);
 	};
 	
 	$scope.deletar = function(contatos){
+		console.log($scope.contatos);
 		if(confirm("Deseja Excluir?")){
 			ContatoService.deletar(contatos).then(listar);
 		}
 	};
 	
 	$scope.atualizar = function(contatos){		
-		$scope.contatos = angular.copy(contatos);			
+		$scope.contatos = angular.copy(contatos);
+		
+		console.log($scope.contatos);
 	};
 	
 	listar();
@@ -30,7 +37,8 @@ app.controller("listaDeContatosCtrl",function($scope,ContatoService){
 app.service("ContatoService",function($http){
 	
 	this.listar = function(){
-		return $http.get("http://localhost:8080/project-contatos/rest/contato/contatos");		
+		return $http.get("http://localhost:8080/project-contatos/rest/contato/contatos");	
+		
 	};
 	
 	this.salvar = function(contatos){

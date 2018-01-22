@@ -30,13 +30,13 @@ public class AtualizarContatoLogica implements Logica {
 		String nascimento = request.getParameter("nascimento");
 		contato.setId(new Integer(id));
 
-		try {
+		/*try {
 			contato.setNascimento(dataConv.convertStringInData(nascimento));
 		} catch (ParseException e) {
 			e.printStackTrace();
-		}	
+		}	*/
 
-		dao.alterar(contato);		
+	//	dao.alterar(contato);		
 		response.sendRedirect("sucesso.jsp");		
 	}
 }

@@ -1,7 +1,5 @@
 package br.com.contato.modelo;
 
-import java.util.Calendar;
-
 import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class Contato {
@@ -29,16 +27,16 @@ public class Contato {
 		this.fone = fone;
 	}
 
-	public Calendar getNascimento() {
+	public String getNascimento() {
 		return nascimento;
 	}
 
-	public void setNascimento(Calendar nascimento) {
+	public void setNascimento(String nascimento) {
 		this.nascimento = nascimento;
 	}
 
 	private int id;
 	private String nome;
 	private String fone;
-	private Calendar nascimento;
+	private String nascimento;
 }

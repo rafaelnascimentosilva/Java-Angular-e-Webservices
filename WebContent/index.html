@@ -24,14 +24,14 @@
 							<div class="form-group col-xs-12">
 								<div class="input-group">
 									<label for="nome"> Nome:</label>
-									<input id="nome" name="nome" type="text" ng-model="contatos.nome" class="form-control">
+									<input id="nome" name="nome" type="text" ng-model="contatos.nome"  placeholder="entre com nome" class="form-control">
 									<br>
 									
 									<label for="fone"> Fone:</label>
-									<input id="fone" name="fone" type="text" ng-model="contatos.fone" class="form-control">
+									<input id="fone" name="fone" type="text" ng-model="contatos.fone"  placeholder="entre com fone " mask="(99) 9999-9999" clean="true" class="form-control">
 									<br>
 									<label for="nascimento"> Nascimento:</label>
-									<input id="nascimento" name="nascimento" type="text" ng-model="contatos.nascimento"   mask='39/19/9999'  class="form-control" >
+									<input id="nascimento" name="nascimento" type="text" ng-model="contatos.nascimento"   placeholder="entre com data"  mask='39/19/9999'  clean="true" class="form-control" >
 								
 									<br>
 								</div>
@@ -70,17 +70,17 @@
 				<th>Data de Nascimento</th>
 				<th class="text-center">Ações</th>
 			</tr>
-			<tbody ng-repeat="c in contatos">
-				<tr ng-repeat="contato in c">
+			<tr ng-repeat="contato in contatos">
+				
 					<td>{{contato.nome}}</td>
 					<td>{{contato.fone}}</td>
-				 	<td>{{contato.nascimento}}</td>
+				 	<td >{{contato.nascimento | date: "dd-MM-yyyy"}}</td>
 					<td class="text-center">
 					<a href=""  ng-click="atualizar(contato)"><span class="glyphicon-pencil text-warning "  data-toggle="modal" data-target="#novoContato"></span></a> 
 					<a href=""  ng-click="deletar(contato)" >	<span class="glyphicon glyphicon-trash text-danger"></span></a></td>
 
-				</tr>
-			</tbody>
+				
+			</tr>
 		</table>
 	</div>
 	<div >

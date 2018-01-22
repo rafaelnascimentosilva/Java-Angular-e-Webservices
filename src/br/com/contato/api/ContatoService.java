@@ -27,7 +27,7 @@ public class ContatoService {
 
 	@GET
 	@Path("/contatos")
-	public List<Contato> contatos() {
+	public List<Contato> contatos() throws ParseException {
 		return new ContatoDAO(connection).getLista();
 	}
 

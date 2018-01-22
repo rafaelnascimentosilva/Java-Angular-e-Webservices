@@ -21,9 +21,9 @@ public class ListarContatoLogica implements Logica {
 		HttpSession sessionList = request.getSession();
 		
 		ContatoDAO dao = new ContatoDAO(connection);
-		List<Contato> listaContatos = dao.getLista();
+		//List<Contato> listaContatos = dao.getLista();
 
-		sessionList.setAttribute("lista", listaContatos);
+		//sessionList.setAttribute("lista", listaContatos);
 		response.sendRedirect("ListarContato.jsp");		
 	}
 }

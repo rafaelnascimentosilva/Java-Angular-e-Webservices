@@ -1,7 +1,6 @@
 package br.com.contato.controller;
 
 import java.sql.Connection;
-import java.text.ParseException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,12 +27,12 @@ public class AdicionarContatoLogica implements Logica {
 		String nascimento = request.getParameter("nascimento");
 		ConverteData data = new ConverteData();
 
-		try {
+		/*try {
 			contato.setNascimento(data.convertStringInData(nascimento));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-
+*/
 		dao.inserir(contato);
 		session.setAttribute("contatoADD", contato);
 		response.sendRedirect("adicionado.jsp");
