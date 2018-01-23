@@ -14,7 +14,7 @@ import br.com.contato.util.ConverteData;
 
 public class TestandoConexao {
 	public static void main(String[] args) throws SQLException, ParseException {
-		Connection connection = new ConnectionFactory().getConnecticon();
+		Connection connection = new ConnectionFactory().getConnection();
 
 		/*** CHAMANDO O METODO DE PAGINACAO ***/
 

@@ -8,33 +8,56 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.contato.api.TransactionManager;
+import br.com.contato.interfaces.TransactionCallback;
 import br.com.contato.modelo.Contato;
 import br.com.contato.util.ConverteData;
 
 public class ContatoDAO {
+
 	private Connection connection;
 
 	public ContatoDAO(Connection connection) {
 		this.connection = connection;
 	}
 
-	public void inserir(Contato contato) throws ParseException {
-		String sql = "insert into tb_contato(nome,fone,nascimento)values(?,?,?)";
-		try {
-			PreparedStatement statement = this.connection.prepareStatement(sql);
-			statement.setString(1, contato.getNome());
-			statement.setString(2, contato.getFone());
-			statement.setDate(3, ConverteData.convertStringInData(contato.getNascimento()));
-			statement.execute();
-			statement.close();
+	/*
+	 * public void inserir(Contato contato) throws ParseException, SQLException
+	 * {
+	 * 
+	 * String sql = "insert into tb_contato(nome,fone,nascimento)values(?,?,?)";
+	 * 
+	 * try { PreparedStatement statement =
+	 * this.connection.prepareStatement(sql); statement.setString(1,
+	 * contato.getNome()); statement.setString(2, contato.getFone());
+	 * statement.setDate(3,
+	 * ConverteData.convertStringInData(contato.getNascimento()));
+	 * statement.execute();
+	 * 
+	 * } catch (SQLException e) {
+	 * System.out.println("erro ao conectar ao banco dao!!!"); throw new
+	 * RuntimeException(e); } finally { connection.close(); } }
+	 */
+	public void inserir(Contato contato) throws ParseException, SQLException {
+		
+		TransactionManager manager = new TransactionManager();
+		manager.doInTransaction(new TransactionCallback() {
+			@Override
+			public void execute(com.mysql.jdbc.Connection connection) throws SQLException, ParseException {
+				
+				String sql = "insert into tb_contato(nome,fone,nascimento)values(?,?,?)";
 
-		} catch (SQLException e) {
-			System.out.println("erro ao conectar ao banco dao!!!");
-			throw new RuntimeException(e);
-		}
+				PreparedStatement statement = connection.prepareStatement(sql);
+				statement.setString(1, contato.getNome());
+				statement.setString(2, contato.getFone());
+				statement.setDate(3, ConverteData.convertStringInData(contato.getNascimento()));
+				statement.execute();
+
+			}
+		});
 	}
 
-	public List<Contato> listaPaginada(int paginaInicio, int paginaLimite) {
+	public List<Contato> listaPaginada(int paginaInicio, int paginaLimite) throws SQLException {
 		try {
 			PreparedStatement statement = this.connection.prepareStatement("SELECT * FROM tb_contato LIMIT ? OFFSET ?");
 			statement.setInt(1, paginaLimite);
@@ -55,11 +78,13 @@ public class ContatoDAO {
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
+		} finally {
+			connection.close();
 		}
 
 	}
 
-	public List<Contato> getLista() throws ParseException {
+	public List<Contato> getLista() throws ParseException, SQLException {
 		try {
 			PreparedStatement statement = this.connection.prepareStatement("select * from tb_contato");
 
@@ -80,10 +105,12 @@ public class ContatoDAO {
 			return listaDeContatos;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
+		} finally {
+			connection.close();
 		}
 	}
 
-	public Contato getContato(Integer id) {
+	public Contato getContato(Integer id) throws SQLException {
 		String sql = "select * from tb_contato where id_contato=?";
 		try {
 			PreparedStatement statement = this.connection.prepareStatement(sql);
@@ -101,6 +128,8 @@ public class ContatoDAO {
 			return contato;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
+		} finally {
+			connection.close();
 		}
 	}
 
@@ -117,14 +146,12 @@ public class ContatoDAO {
 		}
 	}
 
-	public Contato alterar(Contato contato) throws ParseException {
+	public Contato alterar(Contato contato) throws ParseException, SQLException {
 		String sql = "update tb_contato set nome=?, fone=?, nascimento=? where id_contato=?";
 		try {
 			PreparedStatement statement = this.connection.prepareStatement(sql);
 			statement.setString(1, contato.getNome());
 			statement.setString(2, contato.getFone());
-			// statement.setDate(3, new
-			// Date(contato.getNascimento().getTimeInMillis()));
 			statement.setDate(3, ConverteData.convertStringInData(contato.getNascimento()));
 			statement.setLong(4, contato.getId());
 			statement.execute();
@@ -132,6 +159,8 @@ public class ContatoDAO {
 			return contato;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
+		} finally {
+			connection.close();
 		}
 	}
 

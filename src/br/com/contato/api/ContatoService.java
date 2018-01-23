@@ -1,5 +1,6 @@
 package br.com.contato.api;
 
+import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
 
@@ -23,16 +24,16 @@ import br.com.contato.modelo.Contato;
 
 public class ContatoService {
 
-	Connection connection = (Connection) new ConnectionFactory().getConnecticon();
+	Connection connection = (Connection) new ConnectionFactory().getConnection();
 
 	@GET
 	@Path("/contatos")
-	public List<Contato> contatos() throws ParseException {
+	public List<Contato> contatos() throws ParseException, SQLException {
 		return new ContatoDAO(connection).getLista();
 	}
 
 	@POST
-	public void Adiciona(Contato contato) throws ParseException {
+	public void Adiciona(Contato contato) throws ParseException, SQLException {
 		new ContatoDAO(connection).inserir(contato);
 	}
 
@@ -45,13 +46,13 @@ public class ContatoService {
 	@PUT
 	@Consumes("application/json")	
 	@Path("{id}")	
-	public Contato Atualiza(@PathParam("id") Integer id, Contato contato) throws ParseException {
+	public Contato Atualiza(@PathParam("id") Integer id, Contato contato) throws ParseException, SQLException {
 		return new ContatoDAO(connection).alterar(contato);
 	}
 
 	@GET
 	@Path("{id}")
-	public Contato getContato(@PathParam("id") Integer id) {
+	public Contato getContato(@PathParam("id") Integer id) throws SQLException {
 		return new ContatoDAO(connection).getContato(id);
 	}
 }

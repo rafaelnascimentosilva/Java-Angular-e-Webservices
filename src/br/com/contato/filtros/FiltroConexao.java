@@ -26,7 +26,7 @@ public class FiltroConexao implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		Connection connection = new ConnectionFactory().getConnecticon();
+		Connection connection = new ConnectionFactory().getConnection();
 		System.out.println("ABRINDO CONEXAO COM BANCO............");
 		request.setAttribute("filtro_conexao", connection);
 		chain.doFilter(request, response);

@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionFactory {
-	public Connection getConnecticon() {
+	public Connection getConnection() {
 		try {
 			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 
