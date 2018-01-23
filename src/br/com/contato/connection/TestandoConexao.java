@@ -40,9 +40,9 @@ public class TestandoConexao {
 		ContatoDAO dao = new ContatoDAO(connection);
 		Contato contato = new Contato();
 
-		contato.setNome("Jose");
+		contato.setNome("Paulo");
 		contato.setFone("988888888");
-		String data = "6-10-2017";
+		String data = "6/10/2017";
 		contato.setNascimento(data);
 		
 		dao.inserir(contato);
