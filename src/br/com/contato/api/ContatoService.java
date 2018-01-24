@@ -28,7 +28,7 @@ public class ContatoService {
 
 	@GET
 	@Path("/contatos")
-	public List<Contato> contatos() throws ParseException, SQLException {
+	public List<Contato> contatos() {
 		return new ContatoDAO(connection).getLista();
 	}
 
@@ -39,14 +39,14 @@ public class ContatoService {
 
 	@DELETE
 	@Path("/{id}")
-	public void Deleta(@PathParam("id") Integer id) throws ParseException {
+	public void Deleta(@PathParam("id") Integer id) {
 		new ContatoDAO(connection).deletar(id);
 	}
-	
+
 	@PUT
-	@Consumes("application/json")	
-	@Path("{id}")	
-	public Contato Atualiza(@PathParam("id") Integer id, Contato contato) throws ParseException, SQLException {
+	@Consumes("application/json")
+	@Path("{id}")
+	public Contato Atualiza(@PathParam("id") Integer id, Contato contato) {
 		return new ContatoDAO(connection).alterar(contato);
 	}
 

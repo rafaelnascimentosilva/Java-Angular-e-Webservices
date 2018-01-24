@@ -12,14 +12,18 @@ public class TransactionManager {
 	private ConnectionFactory factory = new ConnectionFactory();
 
 	public void doInTransaction(TransactionCallback callback) {
+
 		Connection connection = null;
+
 		try {
-			connection = (Connection) this.factory.getConnection(); // abre conexão
+			connection = (Connection) this.factory.getConnection(); // abre
+
 			connection.setAutoCommit(false); // inicia a transação
-			// --
+
 			callback.execute(connection); // sua lógica executada aqui
-			// --
+
 			connection.commit(); // comita transação
+
 		} catch (Exception e) {
 			if (connection != null) {
 				// desfaz alterações enviadas pro banco
