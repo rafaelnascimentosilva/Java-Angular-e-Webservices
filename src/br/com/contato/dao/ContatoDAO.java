@@ -39,7 +39,7 @@ public class ContatoDAO {
 			}
 		});
 	}
-
+//FALTA ADICIONAR TRANSACTION MANAGER
 	public List<Contato> listaPaginada(int paginaInicio, int paginaLimite) throws SQLException {
 		try {
 			PreparedStatement statement = this.connection.prepareStatement("SELECT * FROM tb_contato LIMIT ? OFFSET ?");
@@ -94,6 +94,7 @@ public class ContatoDAO {
 		return listaDeContatos;
 	}
 
+	//FALTA ADICIONAR TRANSACTION MANAGER
 	public Contato getContato(Integer id) throws SQLException {
 		
 		String sql = "select * from tb_contato where id_contato=?";

@@ -3,14 +3,9 @@ package br.com.contato.connection;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 
 import br.com.contato.dao.ContatoDAO;
 import br.com.contato.modelo.Contato;
-import br.com.contato.util.ConverteData;
 
 public class TestandoConexao {
 	public static void main(String[] args) throws SQLException, ParseException {
