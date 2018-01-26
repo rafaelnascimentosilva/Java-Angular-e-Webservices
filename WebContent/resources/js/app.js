@@ -29,7 +29,10 @@ app.controller("listaDeContatosCtrl",function($scope,ContatoService,$http,$filte
 	$scope.editar = function(contato){	
 		$scope.contato = angular.copy(contato); 
 		$scope.contato.nascimento = $filter("date")($scope.contato.nascimento,"dd/MM/yyyy");
-	};	
+	};
+	
+	
+	
 });
 
 app.service("ContatoService",function($http){
@@ -50,5 +53,8 @@ app.service("ContatoService",function($http){
 		return $http.delete("http://localhost:8080/project-contatos/rest/contato/"+contatos.id);
 	};
 	
+	this.paginado =  function(contatos){
+		return $http.get("http://localhost:8080/project-contatos/rest/contato/5/0");
+	};
 });
 

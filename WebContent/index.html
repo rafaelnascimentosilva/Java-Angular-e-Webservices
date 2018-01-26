@@ -6,7 +6,7 @@
 	<title>SPA com Angular, Bootstrap e Java</title>
 	<link rel="stylesheet" type="text/css"	href="resources/css/estilo.css">
 	<link rel="stylesheet" type="text/css" href="resources/bootstrap/css/bootstrap.min.css">
-	   <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="shortcut icon" href="resources/imagens/faviconAngular.png">	
 	</head>
 <body ng-controller="listaDeContatosCtrl" ng-init="listar()">
@@ -47,7 +47,7 @@
 				</tr>
 			</table>
 		</div>		
-		<div class="" pagination></div>
+		<div class="paginacao"  pagination></div>
 		<div >
 			<button ng-click="novo()"  class="btn btn-primary btn-block"  data-toggle="modal" data-target="#novoContato">Novo</button>
 		</div>	
@@ -133,7 +133,10 @@
 		</div>
 			
 	</div><!-- close jumbotron -->
+	<div ng-controller="PaginationCtrl" ng-init="paginacao()">
 	
+	
+	</div>
 
 	<script src="resources/lib/angular/angular.js"></script>
 	<script src="resources/lib/angular/ngMask.min.js"></script>	
@@ -150,4 +153,6 @@
 
 	
 </body>
+
+
 </html>

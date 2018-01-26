@@ -81,6 +81,10 @@ body {
 	margin-top: 10px
 }
 
+.paginacao{  
+    text-align: center;    	
+}
+
 footer {
 	position: absolute;
 	bottom: 0;

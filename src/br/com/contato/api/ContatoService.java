@@ -31,6 +31,12 @@ public class ContatoService {
 	public List<Contato> contatos() {
 		return new ContatoDAO(connection).getLista();
 	}
+	
+	@GET
+	@Path("/{limite}/{inicio}")
+	public List<Contato> contatosPaginados(@PathParam("limite") Integer limite,@PathParam("inicio") Integer inicio) throws SQLException{		
+		return new ContatoDAO(connection).listaPaginada(limite, inicio);
+	}
 
 	@POST
 	public void Adiciona(Contato contato) throws ParseException, SQLException {
