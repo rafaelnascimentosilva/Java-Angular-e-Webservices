@@ -6,12 +6,14 @@
 	<title>SPA com Angular, Bootstrap e Java</title>
 	<link rel="stylesheet" type="text/css"	href="resources/css/estilo.css">
 	<link rel="stylesheet" type="text/css" href="resources/bootstrap/css/bootstrap.min.css">
-		
+	   <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="shortcut icon" href="resources/imagens/faviconAngular.png">	
 	</head>
 <body ng-controller="listaDeContatosCtrl" ng-init="listar()">
 
 	<div class="jumbotron">
 		<div class="container">
+	
 			<div class="row cabecalho ">		
 			<h5 ng-bind="app">	</h5>			
 			
@@ -45,7 +47,7 @@
 				</tr>
 			</table>
 		</div>		
-		
+		<div class="" pagination></div>
 		<div >
 			<button ng-click="novo()"  class="btn btn-primary btn-block"  data-toggle="modal" data-target="#novoContato">Novo</button>
 		</div>	
@@ -129,13 +131,23 @@
 				</div>
 			</div>
 		</div>
+			
 	</div><!-- close jumbotron -->
 	
-	
+
 	<script src="resources/lib/angular/angular.js"></script>
 	<script src="resources/lib/angular/ngMask.min.js"></script>	
 	<script src="resources/js/jquery-2.2.4.min.js"></script>
 	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
 	<script src="resources/js/app.js"></script>	
+	<script src="resources/js/paginationDirective.js"></script>
+	
+	
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+    <script src="resources/js/exemplo.js"></script>
+
+	
 </body>
 </html>

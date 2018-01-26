@@ -35,12 +35,25 @@ public class TestandoConexao {
 		ContatoDAO dao = new ContatoDAO(connection);
 		Contato contato = new Contato();
 
-		contato.setNome("Paulo");
+	/*	contato.setNome("Paulo");
 		contato.setFone("988888888");
 		String data = "6/10/2017";
 		contato.setNascimento(data);
 		
-		dao.inserir(contato);
+		dao.inserir(contato);*/
+		
+		
+		
+		for (Contato c : dao.listaPaginada(5, 0)) {
+			System.out.println(c.getNome());
+		}
+		
+		Connection connection2 = new ConnectionFactory().getConnection();
+		ContatoDAO dao2 = new ContatoDAO(connection2);
+		System.out.println("");
+		for (Contato c : dao2.listaPaginada(5, 10)) {
+			System.out.println(c.getNome());
+		}
 		
 		
 		/*SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");		

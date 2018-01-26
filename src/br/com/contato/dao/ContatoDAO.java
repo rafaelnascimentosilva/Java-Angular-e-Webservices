@@ -40,9 +40,9 @@ public class ContatoDAO {
 		});
 	}
 //FALTA ADICIONAR TRANSACTION MANAGER
-	public List<Contato> listaPaginada(int paginaInicio, int paginaLimite) throws SQLException {
+	public List<Contato> listaPaginada( int paginaLimite, int paginaInicio) throws SQLException {
 		try {
-			PreparedStatement statement = this.connection.prepareStatement("SELECT * FROM tb_contato LIMIT ? OFFSET ?");
+			PreparedStatement statement = this.connection.prepareStatement("SELECT * FROM tb_contato ORDER by nome ASC LIMIT ? OFFSET ?");
 			statement.setInt(1, paginaLimite);
 			statement.setInt(2, paginaInicio);
 			ResultSet rs = statement.executeQuery();
