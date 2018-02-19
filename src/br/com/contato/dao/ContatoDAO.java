@@ -53,6 +53,7 @@ public class ContatoDAO {
 				contato.setId(new Integer(rs.getString("id_contato")));
 				contato.setNome(rs.getString("nome"));
 				contato.setFone(rs.getString("fone"));
+				contato.setNascimento(rs.getString("nascimento"));
 				paginacao.add(contato);
 			}
 

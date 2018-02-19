@@ -51,7 +51,7 @@ public class TestandoConexao {
 		Connection connection2 = new ConnectionFactory().getConnection();
 		ContatoDAO dao2 = new ContatoDAO(connection2);
 		System.out.println("");
-		for (Contato c : dao2.listaPaginada(5, 10)) {
+		for (Contato c : dao2.listaPaginada(5, 5)) {
 			System.out.println(c.getNome());
 		}
 		

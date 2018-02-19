@@ -1,12 +1,30 @@
 var app = angular.module("listaDeContatos",['ngMask','ngAnimate', 'ngSanitize', 'ui.bootstrap']);
+
+
 app.controller("listaDeContatosCtrl",function($scope,ContatoService,$http,$filter){
 	$scope.app = "Lista Telefônica";	
 	$scope.contatos = [];	
 	
+	
+	 $scope.setPage = function (pageNo) {
+		 $scope.currentPage = pageNo;
+		 console.log($scope.currentPage);	
+		 
+		 if (pageNo == 1) {
+			 this.paginar(5,0);
+		}
+		 if (pageNo == 2) {
+			this.paginar(5,5);
+		}
+	 };
+		  
+		  
 	$scope.listar = function(){
 		ContatoService.listar().then(function (response) {
-			$scope.contatos = response.data.contato;			
-			 console.log($scope.contatos);		
+			$scope.contatos = response.data.contato;	
+			$scope.bigTotalItems = response.data.contato.length;
+			
+			 console.log($scope.bigTotalItems);		
 		});
 	}
 	
@@ -31,7 +49,13 @@ app.controller("listaDeContatosCtrl",function($scope,ContatoService,$http,$filte
 		$scope.contato.nascimento = $filter("date")($scope.contato.nascimento,"dd/MM/yyyy");
 	};
 	
-	
+	$scope.paginar = function(limit,attr){
+		ContatoService.paginado(limit,attr).then(function (response) {
+			$scope.contatos = response.data.contato;
+				
+		});
+	};
+
 	
 });
 
@@ -53,8 +77,34 @@ app.service("ContatoService",function($http){
 		return $http.delete("http://localhost:8080/project-contatos/rest/contato/"+contatos.id);
 	};
 	
-	this.paginado =  function(contatos){
-		return $http.get("http://localhost:8080/project-contatos/rest/contato/5/0");
-	};
+	this.paginado =  function(limit,attr){
+		return $http.get("http://localhost:8080/project-contatos/rest/contato/"+limit+"/"+attr);
+	};	
+	
+	this.qtdContatos = function(){
+		return $http.get("http://localhost:8080/project-contatos/rest/contato/contatos").length; 
+	};	
+	
+	
+	
 });
 
+
+app.controller("PaginationCtrl", function ($scope, $log) {	
+	
+	  $scope.totalItems;
+	  $scope.currentPage;
+
+	 /* $scope.setPage = function (pageNo) {
+	    $scope.currentPage = pageNo;
+	  };
+*/
+	  $scope.pageChanged = function() {
+	    $log.log('Page changed to: ' + $scope.currentPage);
+	  };
+
+	  $scope.maxSize = 5;
+	  $scope.bigTotalItems = 14;
+	  $scope.bigCurrentPage = 1;
+	  
+	});

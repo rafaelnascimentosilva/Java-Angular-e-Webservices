@@ -9,7 +9,7 @@
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="shortcut icon" href="resources/imagens/faviconAngular.png">	
 	</head>
-<body ng-controller="listaDeContatosCtrl" ng-init="listar()">
+<body ng-controller="listaDeContatosCtrl" ng-init="paginar(5,0)">
 
 	<div class="jumbotron">
 		<div class="container">
@@ -47,7 +47,10 @@
 				</tr>
 			</table>
 		</div>		
-		<div class="paginacao"  pagination></div>
+		<div class="paginacao"  pagination>
+		
+		
+		</div>
 		<div >
 			<button ng-click="novo()"  class="btn btn-primary btn-block"  data-toggle="modal" data-target="#novoContato">Novo</button>
 		</div>	
@@ -133,7 +136,7 @@
 		</div>
 			
 	</div><!-- close jumbotron -->
-	<div ng-controller="PaginationCtrl" ng-init="paginacao()">
+	<div ng-controller="PaginationCtrl" >
 	
 	
 	</div>

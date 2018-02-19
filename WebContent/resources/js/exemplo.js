@@ -1,5 +1,5 @@
 
-angular.module('listaDeContatos').controller("PaginationCtrl", function ($scope, $log,ContatoService) {
+/*angular.module('listaDeContatos').controller("PaginationCtrl", function ($scope, $log,ContatoService) {
 	
   $scope.totalItems = 64;
   $scope.currentPage = 4;
@@ -16,10 +16,5 @@ angular.module('listaDeContatos').controller("PaginationCtrl", function ($scope,
   $scope.bigTotalItems = 100;
   $scope.bigCurrentPage = 1;
   
-  $scope.paginacao = function(){
-		ContatoService.listar().then(function (response) {
-			//$scope.totalItems = response.data.contato.lengh;			
-			 console.log("tamanho:"+response.data.contato.length);		
-		});
-	}
-});
+
+});*/
