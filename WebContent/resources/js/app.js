@@ -3,28 +3,17 @@ var app = angular.module("listaDeContatos",['ngMask','ngAnimate', 'ngSanitize', 
 
 app.controller("listaDeContatosCtrl",function($scope,ContatoService,$http,$filter){
 	$scope.app = "Lista Telefônica";	
-	$scope.contatos = [];	
+	$scope.contatos = [];
+	$scope.maxSize = 5;
+	$scope.pageDefault = 1;
 	
-	
-	 $scope.setPage = function (pageNo) {
-		 $scope.currentPage = pageNo;
-		 console.log($scope.currentPage);	
-		 
-		 if (pageNo == 1) {
-			 this.paginar(5,0);
-		}
-		 if (pageNo == 2) {
-			this.paginar(5,5);
-		}
-	 };
-		  
-		  
 	$scope.listar = function(){
 		ContatoService.listar().then(function (response) {
-			$scope.contatos = response.data.contato;	
-			$scope.bigTotalItems = response.data.contato.length;
-			
-			 console.log($scope.bigTotalItems);		
+			$scope.contatos = response.data.contato;		
+			if($scope.contatos.length >= $scope.maxSize && $scope.pageDefault ==1){					
+				//console.log( Math.trunc($scope.contatos.length/ 4));				
+				$scope.paginar($scope.maxSize, 0);
+			}				
 		});
 	}
 	
@@ -49,14 +38,13 @@ app.controller("listaDeContatosCtrl",function($scope,ContatoService,$http,$filte
 		$scope.contato.nascimento = $filter("date")($scope.contato.nascimento,"dd/MM/yyyy");
 	};
 	
-	$scope.paginar = function(limit,attr){
+	$scope.paginar = function(limit,attr){		
 		ContatoService.paginado(limit,attr).then(function (response) {
-			$scope.contatos = response.data.contato;
-				
+			$scope.contatos = response.data.contato;				
 		});
-	};
+		
+	};	
 
-	
 });
 
 app.service("ContatoService",function($http){
@@ -82,29 +70,33 @@ app.service("ContatoService",function($http){
 	};	
 	
 	this.qtdContatos = function(){
-		return $http.get("http://localhost:8080/project-contatos/rest/contato/contatos").length; 
+		return $http.get("http://localhost:8080/project-contatos/rest/contato/contatos"); 
 	};	
-	
-	
-	
 });
 
 
-app.controller("PaginationCtrl", function ($scope, $log) {	
+app.controller("PaginationCtrl", function ($scope, $log,ContatoService) {	
 	
-	  $scope.totalItems;
-	  $scope.currentPage;
+	//$scope.totalItems = 14;
+	//$scope.currentPage = 4;
+	//$scope.maxSize = 5;
+	$scope.bigTotalItems = 50;
+	//$scope.numPages = 14;
+	$scope.bigCurrentPage = 1;	
 
-	 /* $scope.setPage = function (pageNo) {
-	    $scope.currentPage = pageNo;
-	  };
-*/
+	  $scope.setPage = function (pageNo) {
+		  $scope.currentPage = pageNo;
+			 console.log($scope.currentPage * $scope.maxSize);		 
+			 
+			 if (pageNo== 1) {
+				 this.paginar(5,0);
+			}else{
+				this.paginar(5,Math.round($scope.currentPage * $scope.maxSize ) -5);
+			}	
+		};
+
 	  $scope.pageChanged = function() {
 	    $log.log('Page changed to: ' + $scope.currentPage);
 	  };
-
-	  $scope.maxSize = 5;
-	  $scope.bigTotalItems = 14;
-	  $scope.bigCurrentPage = 1;
 	  
 	});

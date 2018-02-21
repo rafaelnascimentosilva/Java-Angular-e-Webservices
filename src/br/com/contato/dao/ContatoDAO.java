@@ -66,7 +66,6 @@ public class ContatoDAO {
 		} finally {
 			connection.close();
 		}
-
 	}
 
 	public List<Contato> getLista() {
