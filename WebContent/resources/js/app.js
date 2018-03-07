@@ -92,6 +92,10 @@ app.controller("PaginationCtrl", function ($scope, $log,ContatoService) {
 				 this.paginar(5,0);
 			}else{
 				this.paginar(5,Math.round($scope.currentPage * $scope.maxSize ) -5);
+				console.log("das",Math.round($scope.currentPage * $scope.maxSize ) -5);
+				console.log("maxino de paginas",$scope.maxSize);
+				console.log("pagina corrent",$scope.currentPage);
+				console.log("nume iten por page atual",$scope.contatos.length);
 			}	
 		};
 

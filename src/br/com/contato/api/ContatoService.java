@@ -14,14 +14,14 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 import com.mysql.jdbc.Connection;
+import javax.ws.rs.core.MediaType;
 
 import br.com.contato.connection.ConnectionFactory;
 import br.com.contato.dao.ContatoDAO;
 import br.com.contato.modelo.Contato;
 
 @Path("/contato")
-@Produces("application/json")
-
+@Produces(MediaType.APPLICATION_JSON)
 public class ContatoService {
 
 	Connection connection = (Connection) new ConnectionFactory().getConnection();
@@ -31,10 +31,11 @@ public class ContatoService {
 	public List<Contato> contatos() {
 		return new ContatoDAO(connection).getLista();
 	}
-	
+
 	@GET
 	@Path("/{limite}/{inicio}")
-	public List<Contato> contatosPaginados(@PathParam("limite") Integer limite,@PathParam("inicio") Integer inicio) throws SQLException{		
+	public List<Contato> contatosPaginados(@PathParam("limite") Integer limite, @PathParam("inicio") Integer inicio)
+			throws SQLException {
 		return new ContatoDAO(connection).listaPaginada(limite, inicio);
 	}
 
