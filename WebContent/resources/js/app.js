@@ -1,21 +1,23 @@
 var app = angular.module("listaDeContatos",['ngMask','ngAnimate', 'ngSanitize', 'ui.bootstrap']);
 
-
 app.controller("listaDeContatosCtrl",function($scope,ContatoService,$http,$filter){
+	
 	$scope.app = "Lista Telefônica";	
 	$scope.contatos = [];
-	$scope.maxSize = 5;
-	$scope.pageDefault = 1;
 	
 	$scope.listar = function(){
 		ContatoService.listar().then(function (response) {
-			$scope.contatos = response.data.contato;		
-			if($scope.contatos.length >= $scope.maxSize && $scope.pageDefault ==1){					
+			$scope.contatos = response.data.contato;			
+			 $scope.totalItems = $scope.contatos.length;
+			 
+			/*if($scope.contatos.length >= $scope.maxSize && $scope.pageDefault ==1){					
 				//console.log( Math.trunc($scope.contatos.length/ 4));				
-				$scope.paginar($scope.maxSize, 0);
-			}				
+				//$scope.paginar($scope.maxSize, 0);
+			}	*/			
 		});
 	}
+	
+	
 	
 	$scope.novo = function(contato){
 		$scope.contato = {};
@@ -23,7 +25,7 @@ app.controller("listaDeContatosCtrl",function($scope,ContatoService,$http,$filte
 	
 	$scope.salvar = function(contato){			
 		ContatoService.salvar(contato).then($scope.listar);		
-		delete $scope.contato;
+		//delete $scope.contato;
 	};
 	
 	$scope.deletar = function(contato){
@@ -41,10 +43,8 @@ app.controller("listaDeContatosCtrl",function($scope,ContatoService,$http,$filte
 	$scope.paginar = function(limit,attr){		
 		ContatoService.paginado(limit,attr).then(function (response) {
 			$scope.contatos = response.data.contato;				
-		});
-		
+		});		
 	};	
-
 });
 
 app.service("ContatoService",function($http){
@@ -75,32 +75,31 @@ app.service("ContatoService",function($http){
 });
 
 
-app.controller("PaginationCtrl", function ($scope, $log,ContatoService) {	
-	
-	//$scope.totalItems = 14;
-	//$scope.currentPage = 4;
-	//$scope.maxSize = 5;
-	$scope.bigTotalItems = 50;
-	//$scope.numPages = 14;
-	$scope.bigCurrentPage = 1;	
+app.filter("startFrom", function(){
+	return function(data, start){
+		return data.slice(start);
+	}
+});
 
+app.controller("PaginationCtrl", function ($scope, $log, ContatoService) {	
+	
+	  $scope.currentPage = 1;	  
+	  $scope.pageSize = 3;	  
+	  
 	  $scope.setPage = function (pageNo) {
-		  $scope.currentPage = pageNo;
-			 console.log($scope.currentPage * $scope.maxSize);		 
-			 
-			 if (pageNo== 1) {
-				 this.paginar(5,0);
-			}else{
-				this.paginar(5,Math.round($scope.currentPage * $scope.maxSize ) -5);
-				console.log("das",Math.round($scope.currentPage * $scope.maxSize ) -5);
-				console.log("maxino de paginas",$scope.maxSize);
-				console.log("pagina corrent",$scope.currentPage);
-				console.log("nume iten por page atual",$scope.contatos.length);
-			}	
-		};
+	    $scope.currentPage = pageNo;	   
+	  };
 
 	  $scope.pageChanged = function() {
 	    $log.log('Page changed to: ' + $scope.currentPage);
+	    $log.log('Contatos length : ' + $scope.contatos.length);	    
+	    for (var i = 0; i < $scope.contatos.length; i++) {
+	    	  $log.log($scope.contatos[i].nome);
+		}
+	    
+	    $scope.paginar($scope.pageSize,  ($scope.currentPage -1) );
 	  };
+
+	  $scope.bigCurrentPage = 1;
 	  
 	});

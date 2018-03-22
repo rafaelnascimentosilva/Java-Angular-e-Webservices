@@ -36,7 +36,7 @@
 					<th>Aniversário</th>
 					<th>Ações</th>
 				</tr>
-				<tr ng-repeat="contato in contatos | filter:minhaBusca | orderBy:'nome'">						
+				<tr ng-repeat="contato in contatos | startFrom:1 | limitTo:pageSize"> <!-- filter:minhaBusca | -->						
 						<td> {{contato.nome}} </td>
 						<td> {{contato.fone}} </td>
 					 	<td> {{contato.nascimento | date: "dd/MM/yyyy"}} </td>
@@ -47,7 +47,8 @@
 				</tr>
 			</table>
 		</div>	
-		<div ng-init="PaginationCtrl" ng-hide="false">
+		
+		<div ng-init="PaginationCtrl" >
 			<div class="paginacao"  pagination>			
 			
 			</div>	
