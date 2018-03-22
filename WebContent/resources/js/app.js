@@ -8,16 +8,9 @@ app.controller("listaDeContatosCtrl",function($scope,ContatoService,$http,$filte
 	$scope.listar = function(){
 		ContatoService.listar().then(function (response) {
 			$scope.contatos = response.data.contato;			
-			 $scope.totalItems = $scope.contatos.length;
-			 
-			/*if($scope.contatos.length >= $scope.maxSize && $scope.pageDefault ==1){					
-				//console.log( Math.trunc($scope.contatos.length/ 4));				
-				//$scope.paginar($scope.maxSize, 0);
-			}	*/			
+			 $scope.totalItems = $scope.contatos.length;					
 		});
 	}
-	
-	
 	
 	$scope.novo = function(contato){
 		$scope.contato = {};
@@ -90,14 +83,8 @@ app.controller("PaginationCtrl", function ($scope, $log, ContatoService) {
 	    $scope.currentPage = pageNo;	   
 	  };
 
-	  $scope.pageChanged = function() {
-	    $log.log('Page changed to: ' + $scope.currentPage);
-	    $log.log('Contatos length : ' + $scope.contatos.length);	    
-	    for (var i = 0; i < $scope.contatos.length; i++) {
-	    	  $log.log($scope.contatos[i].nome);
-		}
-	    
-	    $scope.paginar($scope.pageSize,  ($scope.currentPage -1) );
+	  $scope.pageChanged = function() {	    	  
+	    $scope.paginar($scope.pageSize, $scope.setPage);
 	  };
 
 	  $scope.bigCurrentPage = 1;

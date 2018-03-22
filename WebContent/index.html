@@ -36,7 +36,7 @@
 					<th>Aniversário</th>
 					<th>Ações</th>
 				</tr>
-				<tr ng-repeat="contato in contatos | startFrom:1 | limitTo:pageSize"> <!-- filter:minhaBusca | -->						
+				<tr ng-repeat="contato in contatos| filter:minhaBusca | startFrom:(currentPage - 1) * pageSize | limitTo:pageSize"> 						
 						<td> {{contato.nome}} </td>
 						<td> {{contato.fone}} </td>
 					 	<td> {{contato.nascimento | date: "dd/MM/yyyy"}} </td>
