@@ -1,6 +1,5 @@
 <div ng-controller="PaginationCtrl"> 
     <ul uib-pagination total-items="totalItems"  items-per-page="pageSize"  ng-change="pageChanged()" 
-     ng-model="currentPage" max-size="pageSize" boundary-links="true" num-pages="numPages"></ul>
-    
-   <pre>Page: {{bigCurrentPage}} / {{numPages}} </pre> 
+     ng-model="currentPage" max-size="pageSize" boundary-links="true" num-pages="numPages"></ul>    
+   <pre>Page: {{currentPage}} / {{numPages}} </pre> 
 </div>

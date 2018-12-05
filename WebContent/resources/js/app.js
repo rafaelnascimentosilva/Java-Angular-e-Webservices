@@ -1,6 +1,6 @@
 var app = angular.module("listaDeContatos",['ngMask','ngAnimate', 'ngSanitize', 'ui.bootstrap']);
 
-app.controller("listaDeContatosCtrl",function($scope,ContatoService,$http,$filter) {
+app.controller("listaDeContatosCtrl",function($scope,ContatoService,$http ,$filter) {
 	
 	$scope.app = "Lista Telefônica";	
 	$scope.contatos = [];
