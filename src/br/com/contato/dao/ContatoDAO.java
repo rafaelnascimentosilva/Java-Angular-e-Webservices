@@ -21,7 +21,7 @@ public class ContatoDAO {
 		this.connection = connection;
 	}
 
-	public void inserir(Contato contato) {
+	public void inserir(final Contato contato) {
 
 		TransactionManager manager = new TransactionManager();
 		manager.doInTransaction(new TransactionCallback() {
@@ -71,7 +71,7 @@ public class ContatoDAO {
 	public List<Contato> getLista() {
 
 		TransactionManager manager = new TransactionManager();
-		List<Contato> listaDeContatos = new ArrayList<Contato>();
+		final List<Contato> listaDeContatos = new ArrayList<Contato>();
 
 		manager.doInTransaction(new TransactionCallback() {
 
@@ -121,7 +121,7 @@ public class ContatoDAO {
 		}
 	}
 
-	public void deletar(Integer id) {
+	public void deletar(final Integer id) {
 
 		TransactionManager manager = new TransactionManager();
 		manager.doInTransaction(new TransactionCallback() {
@@ -136,7 +136,7 @@ public class ContatoDAO {
 		});
 	}
 
-	public Contato alterar(Contato contato) {
+	public Contato alterar(final Contato contato) {
 		TransactionManager manager = new TransactionManager();
 		manager.doInTransaction(new TransactionCallback() {
 
